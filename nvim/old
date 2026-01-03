@@ -21,7 +21,6 @@ call plug#end()
 " Global Sets
 syntax on            " Enable syntax highlight
 set rnu              " Enable relative line numbers
-set nu               " Enable line numbers
 set tabstop=4        " Show existing tab with 4 spaces width
 set softtabstop=4    " Show existing tab with 4 spaces width
 set shiftwidth=4     " When indenting with '>', use 4 spaces width
@@ -52,16 +51,6 @@ filetype indent on   " Load the indent file for the file type, if any
 nmap op o<Esc>k
 nmap oi O<Esc>j
 nmap oo A<CR>
-" Create a tab
-nmap te :tabe<CR>
-" Navigate between buffers
-nmap ty :bn<CR>
-nmap tr :bp<CR>
-" Delete a buffer
-nmap td :bd<CR>
-" Create splits
-nmap th :split<CR>
-nmap tv :vsplit<CR>
 " Move and recenter
 nmap <C-d> <C-d>zz
 nmap <C-u> <C-u>zz
@@ -69,6 +58,7 @@ nmap <C-u> <C-u>zz
 """""" AUTO CMDS AQUI <------ 
 ""nmap <C-a> :NERDTreeToggle<CR>
 nmap <C-a> :CocCommand explorer<CR>
+nmap <C-t> :Telescope
 
 " Shortcuts for split navigation
 map <C-h> <C-w>h
@@ -77,23 +67,17 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " Themes
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
 
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-let g:sonokai_style = 'shusia'
-let g:sonokai_enable_italic = 1
-let g:sonokai_disable_italic_comment = 0
-let g:sonokai_diagnostic_line_highlight = 1
-let g:sonokai_current_word = 'bold'
+"let g:sonokai_style = 'shusia'
 let g:airline_theme = 'minimalist'
-colorscheme gotham
+colorscheme default
+set termguicolors
+highlight Normal ctermbg=None guibg=none
+"set background=None
 " COC
 
 let g:coc_global_extensions = [ 'coc-snippets', 'coc-pairs', 'coc-phpls', 'coc-explorer', 'coc-tsserver', 'coc-html', 'coc-vetur', '@yaegassy/coc-tailwindcss3' ]
